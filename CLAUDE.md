@@ -17,6 +17,14 @@ python3 -m http.server 8000
 
 Open `http://localhost:8000`. A local server is needed for correct path resolution between pages.
 
+## Infrastructure
+
+- **Domain registrar + DNS**: Cloudflare (`edusimon.dev`)
+- **Hosting**: GitHub Pages (CDN + SSL via Let's Encrypt)
+- **Email**: Cloudflare Email Routing → `edusimonpicon@gmail.com`
+- **DNS setup**: CNAME `@` → `EduardoSimon.github.io` (DNS only, no Cloudflare proxy — GitHub needs direct connection for SSL cert provisioning)
+- **CNAME file**: Must exist in repo root to persist the custom domain across deploys. Do not delete it.
+
 ## Deployment
 
 Push to `main` triggers `.github/workflows/deploy.yml`, which deploys to GitHub Pages automatically. No build step — files are served as-is.
